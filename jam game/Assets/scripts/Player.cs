@@ -9,8 +9,11 @@ public class Player : MonoBehaviour
     public int Speed;
     public int S_speed;
 
-    private bool Sprinting = false;
+    [SerializeField] private Vector3 V_direction;
 
+    private bool Sprinting = false;
+    [SerializeField] private float Xaxis;
+    [SerializeField] private float Yaxis;
 
     private void Start()
     {
@@ -32,13 +35,36 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Rig.MovePosition(transform.position + M_input() * Time.deltaTime * Speed);
+        Xaxis = Input.GetAxis("Horizontal"); 
+        Yaxis = Input.GetAxis("Vertical");
+       
+        if (Xaxis < -0.1f)
+        {
+            //left
+            Yaxis = 0;
+        }
+        else if (Xaxis > 0.1f)
+        {
+            //right
+            Yaxis = 0;
+        }
+        if (Yaxis < -0.1f)
+        {
+            //down
+            Xaxis = 0;
+        }
+        else if (Yaxis > 0.1f)
+        {
+            //up
+            Xaxis = 0;
+        }
+
+
+        V_direction = new Vector3(Xaxis * Speed, Yaxis * Speed);
+        transform.position = transform.position + (V_direction * Time.deltaTime);
 
     }
     
 
-    public Vector3 M_input()
-    {
-        return new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"),0);
-    }
+    
 }

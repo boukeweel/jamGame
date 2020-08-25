@@ -5,7 +5,7 @@ using UnityEngine;
 public class pressurpat : MonoBehaviour
 {
 
-    private bool SomeThingOn = false;
+    public bool SomeThingOn = false;
 
     private SpriteRenderer Spr;
 
