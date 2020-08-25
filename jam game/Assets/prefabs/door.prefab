@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &467909010137725165
@@ -98,6 +98,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prp: {fileID: 0}
   color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0.69411767}
+  lightred: {r: 0, g: 0, b: 0, a: 0}
+  darkred: {r: 0, g: 0, b: 0, a: 0}
+  images: {fileID: 0}
+  dooropen: 0
 --- !u!61 &467909010137725162
 BoxCollider2D:
   m_ObjectHideFlags: 0
