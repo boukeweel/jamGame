@@ -15,9 +15,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float Xaxis;
     [SerializeField] private float Yaxis;
 
+    private SpriteRenderer Spr;
+
+    public List<Sprite> sprites = new List<Sprite>();
+
+    public float rollspeed;
+    public float rollTimer;
+
     private void Start()
     {
         Rig = GetComponent<Rigidbody2D>();
+        Spr = GetComponent<SpriteRenderer>();
         S_speed = Speed;
 
     }
@@ -40,24 +48,32 @@ public class Player : MonoBehaviour
        
         if (Xaxis < -0.1f)
         {
-            //left
+            Spr.sprite = sprites[2];
             Yaxis = 0;
         }
         else if (Xaxis > 0.1f)
         {
-            //right
+            Spr.sprite = sprites[3];
             Yaxis = 0;
         }
         if (Yaxis < -0.1f)
         {
-            //down
+            Spr.sprite = sprites[0];
             Xaxis = 0;
         }
         else if (Yaxis > 0.1f)
         {
-            //up
+            Spr.sprite = sprites[1];
             Xaxis = 0;
         }
+
+        if(Input.GetKeyDown(KeyCode.Space) && rollTimer <= 0)
+        {
+            Rig.AddForce(transform.position + new Vector3(Xaxis, Yaxis) * rollspeed, ForceMode2D.Impulse);
+            
+            rollTimer = 2f;
+        }
+        
 
 
         V_direction = new Vector3(Xaxis * Speed, Yaxis * Speed);

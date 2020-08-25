@@ -11,12 +11,12 @@ public class Doos : MonoBehaviour
     {
         if(Holding == true)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetMouseButtonDown(1))
             {
                 this.transform.parent = col_.transform;
 
             }
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetMouseButtonUp(1))
                 this.transform.parent = null;
         }
         else
