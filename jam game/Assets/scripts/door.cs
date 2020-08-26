@@ -9,11 +9,16 @@ public class door : MonoBehaviour
 
     private SpriteRenderer spr;
     private BoxCollider2D BC2d;
-    public Color color;
+    
     public Color lightred;
     public Color darkred;
 
     public Image images;
+
+    public List<Sprite> sprites = new List<Sprite>();
+
+    public SpriteRenderer spritedoor1;
+    public SpriteRenderer spritedoor2;
 
     public bool dooropen = false;
     private void Start()
@@ -25,14 +30,26 @@ public class door : MonoBehaviour
     {
         if (Prp.SomeThingOn == true)
         {
+
+            spritedoor1.sprite = sprites[1];
+            if(spritedoor2 != null)
+            {
+                spritedoor2.sprite = sprites[1];
+            }
             BC2d.enabled = false;
-            spr.color = color;
+            
             dooropen = true;
         }
         else
         {
+            spritedoor1.sprite = sprites[0];
+            if (spritedoor2 != null)
+            {
+                spritedoor2.sprite = sprites[0];
+            }
+
             BC2d.enabled = true;
-            spr.color = Color.white;
+            
             dooropen = false;
         }
         if (dooropen == true)

@@ -28,7 +28,7 @@ public class pressurpat : MonoBehaviour
         }
         if(SomeThingOn == true)
         {
-            Spr.color = color_;
+            //Spr.color = color_;
             if(playonce == true)
             {
                 sound.Play();
@@ -38,7 +38,7 @@ public class pressurpat : MonoBehaviour
         }
         else
         {
-            Spr.color = Color.white;
+            //Spr.color = Color.white;
             playonce = true;
         }
     }

@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
         S_speed = Speed;
 
     }
+    
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -67,12 +68,12 @@ public class Player : MonoBehaviour
             Xaxis = 0;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && rollTimer <= 0)
-        {
-            Rig.AddForce(transform.position + new Vector3(Xaxis, Yaxis) * rollspeed, ForceMode2D.Impulse);
+        //if(Input.GetKeyDown(KeyCode.Space) && rollTimer <= 0)
+        //{
+        //    Rig.AddForce(transform.position + new Vector3(Xaxis, Yaxis) * rollspeed, ForceMode2D.Impulse);
             
-            rollTimer = 2f;
-        }
+        //    rollTimer = 2f;
+        //}
         
 
 
