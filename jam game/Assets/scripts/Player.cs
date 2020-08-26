@@ -22,10 +22,17 @@ public class Player : MonoBehaviour
     public float rollspeed;
     public float rollTimer;
 
+    private AudioSource AuS;
+
+    private bool playonce;
+
+    private float time;
+
     private void Start()
     {
         Rig = GetComponent<Rigidbody2D>();
         Spr = GetComponent<SpriteRenderer>();
+        AuS = GetComponent<AudioSource>();
         S_speed = Speed;
 
     }
@@ -47,26 +54,69 @@ public class Player : MonoBehaviour
         Xaxis = Input.GetAxis("Horizontal"); 
         Yaxis = Input.GetAxis("Vertical");
        
+        //timer for audio
+        if(playonce == false)
+        {
+            time -= Time.deltaTime;
+            if(time <= 0)
+            {
+                time = 0.5f;
+                playonce = true;
+            }
+        }
+        //walking to a direction
         if (Xaxis < -0.1f)
         {
             Spr.sprite = sprites[2];
+            
             Yaxis = 0;
+
+            if (playonce == true)
+            {
+                AuS.Play();
+                playonce = false;
+            }
+                
         }
         else if (Xaxis > 0.1f)
         {
             Spr.sprite = sprites[3];
+            
             Yaxis = 0;
+
+            if (playonce == true)
+            {
+                AuS.Play();
+                playonce = false;
+            }
         }
         if (Yaxis < -0.1f)
         {
             Spr.sprite = sprites[0];
+            
             Xaxis = 0;
+
+            if (playonce == true)
+            {
+                AuS.Play();
+                playonce = false;
+            }
         }
         else if (Yaxis > 0.1f)
         {
             Spr.sprite = sprites[1];
+            
             Xaxis = 0;
+
+            if (playonce == true)
+            {
+                AuS.Play();
+                playonce = false;
+            }
         }
+
+        
+
 
         //if(Input.GetKeyDown(KeyCode.Space) && rollTimer <= 0)
         //{
