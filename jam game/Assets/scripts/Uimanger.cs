@@ -13,4 +13,8 @@ public class Uimanger : MonoBehaviour
     {
         Application.Quit();
     }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
