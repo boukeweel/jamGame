@@ -13,6 +13,8 @@ public class pressurpat : MonoBehaviour
 
     public Color color_;
 
+    public int howmanyone;
+
     private bool playonce;
     private void Start()
     {
@@ -21,10 +23,12 @@ public class pressurpat : MonoBehaviour
     }
     private void Update()
     {
+
+        
         
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Debug.Log(SomeThingOn);
+            Debug.Log(howmanyone);
         }
         if(SomeThingOn == true)
         {
@@ -41,19 +45,25 @@ public class pressurpat : MonoBehaviour
             //Spr.color = Color.white;
             playonce = true;
         }
+
+
+        if (howmanyone == 0)
+        {
+            SomeThingOn = false;
+        }
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("yep");
+        howmanyone++;
         SomeThingOn = true;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        SomeThingOn = false;
+        
+        howmanyone--;
         
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        SomeThingOn = true;
-    }
+    
 }
